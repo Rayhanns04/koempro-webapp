@@ -1,0 +1,192 @@
+@import "../helpers/mixins";
+@import "../helpers/variables";
+
+#hm__outer {
+  display: flex;
+  justify-content: center;
+  //   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  // height: 100vh;
+  background: linear-gradient(180deg, #d3ffe4 0%, #bce7fc 100%);
+  backdrop-filter: blur(30px);
+
+  .hm__header {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+
+    @include dekstop {
+      flex-direction: row;
+      justify-content: flex-end;
+      width: 1120px;
+      margin-top: 58px;
+    }
+
+    .hm__header__btn {
+      width: 100%;
+      height: 52px;
+      background: linear-gradient(
+        270deg,
+        #7cf7a6 1.92%,
+        #90d4f4 47.4%,
+        #38f9d7 100%
+      );
+      backdrop-filter: blur(12px);
+      text-align: center;
+      text-decoration: none;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      font-family: "Poppins", sans-serif;
+      font-size: 16px;
+      font-weight: map-get($fonts-weight, bold);
+      color: white;
+
+      margin-bottom: 42px;
+
+      @include dekstop {
+        width: 157px;
+        border-radius: 10px;
+        margin: 0 0 0 290px;
+      }
+    }
+
+    img {
+      width: 262px;
+      margin-bottom: 20px;
+
+      @include dekstop {
+        margin: 0;
+      }
+    }
+  }
+
+  .hm__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 90%;
+
+    @include dekstop {
+      width: 1160px;
+    }
+
+    .hm__item__container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      @include dekstop {
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+
+      .hm__singleitem {
+        width: 100%;
+        padding: 22px;
+        margin-bottom: 30px;
+        background: radial-gradient(
+          124.8% 2379.43% at 0% 0%,
+          rgba(255, 255, 255, 0.42) 0%,
+          rgba(255, 255, 255, 0) 100%,
+          rgba(255, 255, 255, 0.06) 100%
+        );
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        backdrop-filter: blur(12px);
+        border-radius: 11px;
+
+        @include dekstop {
+          width: 352px;
+          margin: 30px 16px 30px 16px;
+        }
+
+        &__header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 15px;
+
+          &__link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+              font-family: "Poppins", sans-serif;
+              font-size: 16px;
+              font-weight: map-get($fonts-weight, regular);
+              color: $black;
+              text-decoration: none;
+            }
+
+            img {
+              width: 20px;
+              margin-left: 10px;
+            }
+          }
+        }
+
+        &__body {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 28px;
+
+          h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 18px;
+            font-weight: map-get($fonts-weight, bold);
+            color: $black;
+            line-height: 202%;
+          }
+
+          p {
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            font-weight: map-get($fonts-weight, regular);
+            color: $black;
+            line-height: 202%;
+          }
+        }
+
+        &__body2 {
+          &__item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+
+            img {
+              margin-right: 15px;
+            }
+
+            p {
+              font-family: "Poppins", sans-serif;
+              font-size: 12px;
+              font-weight: map-get($fonts-weight, regular);
+              color: $black;
+              line-height: 202%;
+              margin: 0;
+            }
+          }
+
+          &__item:nth-child(2) {
+            margin-bottom: 0;
+          }
+        }
+
+        &__member {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}
