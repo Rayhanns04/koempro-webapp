@@ -29,6 +29,7 @@
     "react-copy-to-clipboard": "5.0.3",
     "react-datetime": "3.0.4",
     "react-dom": "17.0.1",
+    "react-hot-loader": "^4.13.0",
     "react-loading": "^2.0.3",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.2",
@@ -75,5 +76,10 @@
     "eslint-plugin-unused-imports": "1.1.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8"
+  },
+  "babel": {
+    "plugins": [
+      "react-hot-loader/babel"
+    ]
   }
 }

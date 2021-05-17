@@ -17,6 +17,7 @@ import Typography from "@material-ui/core/Typography";
 // @material-ui/icons components
 import Clear from "@material-ui/icons/Clear";
 import MenuIcon from "@material-ui/icons/Menu";
+import LogoType from "../../assets/images/KoemproType.png";
 
 // core components
 import componentStyles from "assets/theme/components/sidebar.js";
@@ -125,7 +126,7 @@ export default function Sidebar({ routes, logo, dropdown, input }) {
     });
   };
   let logoImage = (
-    <img alt={logo.imgAlt} className={classes.logoClasses} src={logo.imgSrc} />
+    <img alt={logo.imgAlt} className={classes.logoClasses} src={LogoType} />
   );
   let logoObject =
     logo && logo.innerLink ? (

@@ -9,10 +9,14 @@ const SignIn = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
   const [inputType, setInputType] = useState(false);
 
+  // Form =====================================================
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  // Router ===================================================
   let history = useHistory();
+
+  // On Key Press =============================================
 
   const handleSubmitForm = () => {
     Axios.post("https://server9999.herokuapp.com/auth/login", {
@@ -87,7 +91,9 @@ const SignIn = () => {
             />
           </div>
 
-          <button onClick={() => handleSubmitForm()}>Sign In</button>
+          <button onClick={() => handleSubmitForm()} onKeyPress>
+            Sign In
+          </button>
           <Link className="sgn__anonym" to="/home">
             Login as anonymous
           </Link>

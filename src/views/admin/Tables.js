@@ -1,5 +1,7 @@
+import { hot } from "react-hot-loader/root";
 import React, { Fragment, useEffect, useState } from "react";
 
+// Installed Dependencies =====================================
 import Axios from "axios";
 import swal from "sweetalert";
 
@@ -195,7 +197,7 @@ const Tables = () => {
     Axios.get("https://server9999.herokuapp.com/members").then((res) => {
       setMembers(res.data);
     });
-  }, [posts, members]);
+  }, ["hot"]);
 
   return (
     <>
@@ -451,7 +453,11 @@ const Tables = () => {
           {/* Button Create ======================================================================== */}
           <br />
           <button
-            class="btn btn-primary btn-lg"
+            class="btn btn-lg"
+            style={{
+              backgroundColor: "#7CF6A6",
+              color: "#FFFFFF",
+            }}
             onClick={() => handleClickOpenCreateFrom()}
           >
             <i class="fas fa-plus"></i>{" "}
@@ -461,7 +467,12 @@ const Tables = () => {
           {/* Table ======================================================================== */}
           <div class="table-responsive">
             <table class="table table-striped table-hover pl-2 ">
-              <thead class="table-dark">
+              <thead
+                style={{
+                  backgroundColor: "#48ED80",
+                  color: "#FFFFFF",
+                }}
+              >
                 <tr>
                   {/* <th>#</th> */}
                   <th>Title</th>
@@ -695,4 +706,4 @@ const Tables = () => {
   );
 };
 
-export default Tables;
+export default hot(Tables);

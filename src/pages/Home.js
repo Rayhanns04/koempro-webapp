@@ -1,4 +1,5 @@
 // Core Components ===================================
+import { hot } from "react-hot-loader/root";
 import React, { useEffect, useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
 // import ReactLoading from "react-loading";
@@ -43,7 +44,7 @@ const Home = () => {
     Axios.get("https://server9999.herokuapp.com/members").then((res) => {
       setMembers(res.data);
     });
-  }, [posts, members]);
+  }, ["hot"]);
 
   const RenderItem = posts.map((item) => {
     // Conditional Rendering ===========================================
@@ -189,4 +190,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default hot(Home);

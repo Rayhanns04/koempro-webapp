@@ -1,3 +1,4 @@
+import { hot } from "react-hot-loader/root";
 import React, { useEffect, useState } from "react";
 
 import Axios from "axios";
@@ -361,7 +362,11 @@ const Members = () => {
           {/* Button Create ======================================================================== */}
           <br />
           <button
-            class="btn btn-primary btn-lg"
+            class="btn btn-lg"
+            style={{
+              backgroundColor: "#7CF6A6",
+              color: "#FFFFFF",
+            }}
             onClick={() => handleClickOpenCreateFrom()}
           >
             <i class="fas fa-plus"></i>
@@ -371,7 +376,12 @@ const Members = () => {
           {/* Table ======================================================================== */}
           <div class="table-responsive">
             <table class="table table-striped table-hover pl-2 ">
-              <thead class="table-dark">
+              <thead
+                style={{
+                  backgroundColor: "#48ED80",
+                  color: "#FFFFFF",
+                }}
+              >
                 <tr>
                   <th>Name</th>
                   <th>PostId</th>
@@ -517,4 +527,4 @@ const Members = () => {
   );
 };
 
-export default Members;
+export default hot(Members);
