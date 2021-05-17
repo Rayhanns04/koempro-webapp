@@ -34,7 +34,6 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const [members, setMembers] = useState([]);
   const [auth, setAuth] = useState();
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setAuth(sessionStorage.getItem("accessToken"));
@@ -47,7 +46,7 @@ const Home = () => {
   }, [posts, members]);
 
   const RenderItem = posts.map((item) => {
-    // Conditional Rendering
+    // Conditional Rendering ===========================================
     const AvatarConditional = () => {
       switch (item.avatar) {
         case "Smile Blue":
@@ -66,17 +65,6 @@ const Home = () => {
           return console.log("Avatar gagal di load!");
       }
     };
-
-    // if (loading === false) {
-    //   return (
-    //     <ReactLoading
-    //       type="spin"
-    //       height={"20%"}
-    //       width={"20%"}
-    //       color="#E6B757"
-    //     />
-    //   );
-    // }
 
     return (
       <div className="hm__singleitem" key={item.id}>
@@ -183,7 +171,7 @@ const Home = () => {
             if (member.PostId != item.id) {
               return null;
             }
-            return <div>{MemberConditional()}</div>;
+            return <div key={member.id}>{MemberConditional()}</div>;
           })}
         </div>
       </div>
@@ -194,11 +182,7 @@ const Home = () => {
     <div id="hm__outer">
       <Header auth={auth} />
       <div className="hm__container">
-        <div className="hm__item__container">
-          {RenderItem}
-
-          {/* ------------- */}
-        </div>
+        <div className="hm__item__container">{RenderItem}</div>
       </div>
       <Footer />
     </div>

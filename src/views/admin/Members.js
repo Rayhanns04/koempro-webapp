@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Axios from "axios";
+import swal from "sweetalert";
 
 // Image ---------------
 import Hans from "../../assets/images/Rayhan-1.svg";
@@ -25,12 +26,7 @@ import Container from "@material-ui/core/Container";
 // import AvatarGroup from "@material-ui/lab/AvatarGroup";
 
 // Form
-// import FormGroup from "@material-ui/core/FormGroup";
-// import FormLabel from "@material-ui/core/FormLabel";
-// import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Header from "components/Headers/Header.js";
-// import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";
 
 import componentStyles from "assets/theme/views/admin/tables.js";
 
@@ -106,12 +102,12 @@ const Members = () => {
           alert(response.data.error);
         } else {
           setOpen(false);
+          return swal("Good job!", "Success Update Member!", "success");
         }
       })
       .catch((error) => {
         console.log(error);
       });
-    // alert("id" + idr);
   };
 
   // Handle Delete ========================================================================
@@ -120,8 +116,17 @@ const Members = () => {
       headers: {
         accessToken: sessionStorage.getItem("accessToken"),
       },
-    });
-    alert("Success Delete Post");
+    })
+      .then((result) => {
+        if (result.data.error) {
+          alert("Don't Have Access Token, Please Sign in Again");
+        } else {
+          return swal("Good job!", "Success Delete Member!", "success");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // Handle Create ========================================================================
@@ -140,10 +145,10 @@ const Members = () => {
     )
       .then((result) => {
         if (result.data.error) {
-          alert("Don't Have Access Token, Please Sign In Again");
+          alert("Don't Have Access Token, Please Sign in Again");
         } else {
-          console.log(result);
           setOpenFromCreate(false);
+          return swal("Good job!", "Success Full Add New Member!", "success");
         }
       })
       .catch((err) => {
@@ -221,7 +226,11 @@ const Members = () => {
             onChange={(e) => setPostIdReceive(e.target.value)}
           >
             {posts.map((item) => {
-              return <option value={item.id}>{item.title}</option>;
+              return (
+                <option value={item.id} key={item.id}>
+                  {item.title}
+                </option>
+              );
             })}
           </select>
           <br />
@@ -300,7 +309,11 @@ const Members = () => {
             onChange={(e) => setPostId(e.target.value)}
           >
             {posts.map((item) => {
-              return <option value={item.id}>{item.title}</option>;
+              return (
+                <option value={item.id} key={item.id}>
+                  {item.title}
+                </option>
+              );
             })}
           </select>
           <br />
@@ -459,7 +472,7 @@ const Members = () => {
                   // return ========================================================================
                   return (
                     <>
-                      <tr>
+                      <tr key={post.id}>
                         <td>
                           <div class="row align-items-center">
                             <div class="col-2">{MemberConditional()}</div>

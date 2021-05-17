@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 
 import Axios from "axios";
+import swal from "sweetalert";
 
 // Image ---------------
 import Hans from "../../assets/images/Rayhan-1.svg";
@@ -124,10 +125,10 @@ const Tables = () => {
     )
       .then((result) => {
         if (result.data.error) {
-          alert("Don't Have Access Token, Please Signin Again");
+          alert("Don't Have Access Token, Please Sign in Again");
         } else {
-          console.log(result);
           setOpen(false);
+          return swal("Good job!", "Success Update Post!", "success");
         }
       })
       .catch((err) => {
@@ -141,8 +142,17 @@ const Tables = () => {
       headers: {
         accessToken: sessionStorage.getItem("accessToken"),
       },
-    });
-    alert("Success Delete Post");
+    })
+      .then((result) => {
+        if (result.data.error) {
+          alert("Don't Have Access Token, Please Sign in Again");
+        } else {
+          return swal("Good job!", "Success Delete Post!", "success");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // Handle Create ========================================================================
@@ -166,9 +176,10 @@ const Tables = () => {
     )
       .then((result) => {
         if (result.data.error) {
-          alert(result.data.error);
+          alert("Don't Have Access Token, Please Sign in Again");
         } else {
           setOpenFromCreate(false);
+          return swal("Good job!", "Success Full Add New Post!", "success");
         }
       })
       .catch((err) => {
@@ -634,7 +645,11 @@ const Tables = () => {
                               }
 
                               return (
-                                <Tooltip title={item.name} placement="top">
+                                <Tooltip
+                                  title={item.name}
+                                  placement="top"
+                                  key={item.id}
+                                >
                                   {MemberConditional()}
                                 </Tooltip>
                               );
