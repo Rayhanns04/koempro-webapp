@@ -170,7 +170,7 @@ const Members = () => {
         setPosts(res.data);
       })
       .catch((Err) => console.log(Err));
-  }, [Members]);
+  }, []);
   return (
     <>
       {/* Update Dialog ======================================================================== */}

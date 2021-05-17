@@ -197,7 +197,7 @@ const Tables = () => {
     Axios.get("https://server9999.herokuapp.com/members").then((res) => {
       setMembers(res.data);
     });
-  }, ["hot"]);
+  }, []);
 
   return (
     <>
@@ -466,7 +466,7 @@ const Tables = () => {
 
           {/* Table ======================================================================== */}
           <div class="table-responsive">
-            <table class="table table-striped table-hover pl-2 ">
+            <table class="table table-striped table-hover ">
               <thead
                 style={{
                   backgroundColor: "#48ED80",
@@ -474,7 +474,6 @@ const Tables = () => {
                 }}
               >
                 <tr>
-                  {/* <th>#</th> */}
                   <th>Title</th>
                   <th>Description</th>
                   <th>Task</th>
@@ -521,7 +520,6 @@ const Tables = () => {
                   return (
                     <Fragment key={post.id}>
                       <tr>
-                        {/* <td>{post.id}</td> */}
                         <td>
                           {AvatarConditional()}
                           {post.title}
@@ -547,12 +545,8 @@ const Tables = () => {
                         >
                           {post.date}
                         </td>
-                        <td
-                          style={{
-                            width: "150px",
-                          }}
-                        >
-                          {post.link}
+                        <td>
+                          <p style={{ width: "100px" }}>{post.link}</p>
                         </td>
                         <td
                           style={{
