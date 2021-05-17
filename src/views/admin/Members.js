@@ -140,7 +140,7 @@ const Members = () => {
     )
       .then((result) => {
         if (result.data.error) {
-          alert(result.data.error);
+          alert("Don't Have Access Token, Please Sign In Again");
         } else {
           console.log(result);
           setOpenFromCreate(false);

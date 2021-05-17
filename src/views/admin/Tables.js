@@ -124,7 +124,7 @@ const Tables = () => {
     )
       .then((result) => {
         if (result.data.error) {
-          alert(result.data.error);
+          alert("Don't Have Access Token, Please Signin Again");
         } else {
           console.log(result);
           setOpen(false);
