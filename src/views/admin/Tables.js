@@ -32,12 +32,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
 
 // Form
-// import FormGroup from "@material-ui/core/FormGroup";
-// import FormLabel from "@material-ui/core/FormLabel";
-// import OutlinedInput from "@material-ui/core/OutlinedInput";
 import Header from "components/Headers/Header.js";
-// import FormControl from "@material-ui/core/FormControl";
-// import Select from "@material-ui/core/Select";
 
 import componentStyles from "assets/theme/views/admin/tables.js";
 
@@ -61,6 +56,7 @@ const useStyles = makeStyles(componentStyles);
 const Tables = () => {
   const classes = useStyles();
   const [posts, setPosts] = useState([]);
+  const [members, setMembers] = useState([]);
 
   // Modal Form Edit --------------------
   const classesDialog = useStylesDialog();
@@ -110,7 +106,7 @@ const Tables = () => {
   const handleUdateProject = (id) => {
     console.log(id);
     Axios.put(
-      "https://koempro-server-side.herokuapp.com/posts/" + id,
+      "https://server9999.herokuapp.com/posts/" + id,
       {
         title: titleReceive,
         desc: descReceive,
@@ -141,21 +137,18 @@ const Tables = () => {
 
   // Handle Delete ========================================================================
   const handleDeletePost = (id) => {
-    Axios.delete(
-      "https://koempro-server-side.herokuapp.com/posts/delete/" + id,
-      {
-        headers: {
-          accessToken: sessionStorage.getItem("accessToken"),
-        },
-      }
-    );
+    Axios.delete("https://server9999.herokuapp.com/posts/" + id, {
+      headers: {
+        accessToken: sessionStorage.getItem("accessToken"),
+      },
+    });
     alert("Success Delete Post");
   };
 
   // Handle Create ========================================================================
   const handleCreatePost = () => {
     Axios.post(
-      "https://koempro-server-side.herokuapp.com/posts/",
+      "https://server9999.herokuapp.com/posts",
       {
         title: title,
         desc: desc,
@@ -185,10 +178,14 @@ const Tables = () => {
 
   // Rest API ========================================================================
   useEffect(() => {
-    Axios.get("https://koempro-server-side.herokuapp.com/posts").then((res) => {
+    Axios.get("https://server9999.herokuapp.com/posts").then((res) => {
       setPosts(res.data);
     });
-  }, [posts]);
+    Axios.get("https://server9999.herokuapp.com/members").then((res) => {
+      setMembers(res.data);
+    });
+  }, [posts, members]);
+
   return (
     <>
       {/* Update Dialog ======================================================================== */}
@@ -541,7 +538,7 @@ const Tables = () => {
                           }}
                         >
                           <AvatarGroup>
-                            {post.Members.map((item) => {
+                            {members.map((item) => {
                               const MemberConditional = () => {
                                 switch (item.name) {
                                   case "Hans":
@@ -631,6 +628,11 @@ const Tables = () => {
                                     );
                                 }
                               };
+
+                              if (item.PostId != post.id) {
+                                return null;
+                              }
+
                               return (
                                 <Tooltip title={item.name} placement="top">
                                   {MemberConditional()}

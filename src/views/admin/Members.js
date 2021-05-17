@@ -90,7 +90,7 @@ const Members = () => {
   // Handle Update ========================================================================
   const handleUpdate = (idr) => {
     Axios.put(
-      "https://koempro-server-side.herokuapp.com/members/find/" + idr,
+      "https://server9999.herokuapp.com/members/" + idr,
       {
         name: nameReceive,
         PostId: postIdReceive,
@@ -116,21 +116,18 @@ const Members = () => {
 
   // Handle Delete ========================================================================
   const handleDeletePost = (id) => {
-    Axios.delete(
-      "https://koempro-server-side.herokuapp.com/members/delete/" + id,
-      {
-        headers: {
-          accessToken: sessionStorage.getItem("accessToken"),
-        },
-      }
-    );
+    Axios.delete("https://server9999.herokuapp.com/members/" + id, {
+      headers: {
+        accessToken: sessionStorage.getItem("accessToken"),
+      },
+    });
     alert("Success Delete Post");
   };
 
   // Handle Create ========================================================================
   const handleCreatePost = () => {
     Axios.post(
-      "https://koempro-server-side.herokuapp.com/members/create",
+      "https://server9999.herokuapp.com/members",
       {
         name: name,
         PostId: postId,
@@ -156,13 +153,13 @@ const Members = () => {
 
   // Rest API ========================================================================
   useEffect(() => {
-    Axios.get("https://koempro-server-side.herokuapp.com/members/")
+    Axios.get("https://server9999.herokuapp.com/members/")
       .then((res) => {
         setMembers(res.data);
       })
       .catch((Err) => console.log(Err));
 
-    Axios.get("https://koempro-server-side.herokuapp.com/posts")
+    Axios.get("https://server9999.herokuapp.com/posts")
       .then((res) => {
         setPosts(res.data);
       })

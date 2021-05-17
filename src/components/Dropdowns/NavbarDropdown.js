@@ -78,7 +78,7 @@ export default function NavbarDropdown() {
           height="1.25rem!important"
           marginRight="1rem"
         />
-        <span>Dashboard</span>
+        <span>User Page</span>
       </Box>
       <Divider component="div" classes={{ root: classes.dividerRoot }} />
       <Box

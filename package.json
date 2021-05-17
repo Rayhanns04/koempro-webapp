@@ -1,17 +1,9 @@
 {
-  "name": "argon-dashboard-material-ui",
+  "name": "koempro",
   "version": "1.0.0",
-  "author": "Creative Tim",
+  "author": "PT SOLUSI INTEK INDONESIA",
   "license": "MIT",
-  "description": "Material UI version of Argon Dashboard React by Creative Tim",
-  "homepage": "https://demos.creative-tim.com/argon-dashboard-material-ui/#/admin/dashboard",
-  "bugs": {
-    "url": "https://github.com/creativetimofficial/argon-dashboard-material-ui/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/creativetimofficial/argon-dashboard-material-ui.git"
-  },
+  "description": "KOEMPRO PT SOLUSI INTEK INDONESIA",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build && gulp licenses",
@@ -37,6 +29,7 @@
     "react-copy-to-clipboard": "5.0.3",
     "react-datetime": "3.0.4",
     "react-dom": "17.0.1",
+    "react-loading": "^2.0.3",
     "react-router-dom": "5.2.0",
     "react-scripts": "4.0.2"
   },

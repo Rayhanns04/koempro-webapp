@@ -1,6 +1,7 @@
 // Core Components ===================================
 import React, { useEffect, useState } from "react";
 import Tooltip from "@material-ui/core/Tooltip";
+// import ReactLoading from "react-loading";
 
 // Others Components =================================
 import Task from "../assets/images/task.svg";
@@ -31,14 +32,19 @@ import Sarah from "../assets/images/Sarah.svg";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const [members, setMembers] = useState([]);
   const [auth, setAuth] = useState();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setAuth(sessionStorage.getItem("accessToken"));
-    Axios.get("https://koempro-server-side.herokuapp.com/posts").then((res) => {
+    Axios.get("https://server9999.herokuapp.com/posts").then((res) => {
       setPosts(res.data);
     });
-  }, [posts]);
+    Axios.get("https://server9999.herokuapp.com/members").then((res) => {
+      setMembers(res.data);
+    });
+  }, [posts, members]);
 
   const RenderItem = posts.map((item) => {
     // Conditional Rendering
@@ -60,6 +66,17 @@ const Home = () => {
           return console.log("Avatar gagal di load!");
       }
     };
+
+    // if (loading === false) {
+    //   return (
+    //     <ReactLoading
+    //       type="spin"
+    //       height={"20%"}
+    //       width={"20%"}
+    //       color="#E6B757"
+    //     />
+    //   );
+    // }
 
     return (
       <div className="hm__singleitem" key={item.id}>
@@ -92,10 +109,10 @@ const Home = () => {
         </div>
 
         <div className="hm__singleitem__member">
-          {item.Members.map((item) => {
+          {members.map((member) => {
             // Conditional Rendering
             const MemberConditional = () => {
-              switch (item.name) {
+              switch (member.name) {
                 case "Hans":
                   return (
                     <Tooltip title="Hans" placement="top" arrow>
@@ -162,6 +179,10 @@ const Home = () => {
                   return console.log("Member tidak ditemukan");
               }
             };
+
+            if (member.PostId != item.id) {
+              return null;
+            }
             return <div>{MemberConditional()}</div>;
           })}
         </div>
