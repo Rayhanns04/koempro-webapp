@@ -84,6 +84,21 @@ const Members = () => {
     setOpenFromCreate(true);
   };
 
+  // Handle Get ========================================================================
+  const handleGetMembers = () => {
+    Axios.get("https://server9999.herokuapp.com/members/")
+      .then((res) => {
+        setMembers(res.data);
+      })
+      .catch((Err) => console.log(Err));
+
+    Axios.get("https://server9999.herokuapp.com/posts")
+      .then((res) => {
+        setPosts(res.data);
+      })
+      .catch((Err) => console.log(Err));
+  };
+
   // Handle Update ========================================================================
   const handleUpdate = (idr) => {
     Axios.put(
@@ -103,6 +118,7 @@ const Members = () => {
           alert(response.data.error);
         } else {
           setOpen(false);
+          setInterval(handleGetMembers, 2000);
           return swal("Good job!", "Success Update Member!", "success");
         }
       })
@@ -122,6 +138,7 @@ const Members = () => {
         if (result.data.error) {
           alert("Don't Have Access Token, Please Sign in Again");
         } else {
+          setInterval(handleGetMembers, 2000);
           return swal("Good job!", "Success Delete Member!", "success");
         }
       })
@@ -149,6 +166,7 @@ const Members = () => {
           alert("Don't Have Access Token, Please Sign in Again");
         } else {
           setOpenFromCreate(false);
+          setInterval(handleGetMembers, 2000);
           return swal("Good job!", "Success Full Add New Member!", "success");
         }
       })

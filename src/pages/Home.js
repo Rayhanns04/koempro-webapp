@@ -38,6 +38,8 @@ const Home = () => {
 
   useEffect(() => {
     setAuth(sessionStorage.getItem("accessToken"));
+
+    // Call RestAPI ===================================================
     Axios.get("https://server9999.herokuapp.com/posts").then((res) => {
       setPosts(res.data);
     });
@@ -99,7 +101,7 @@ const Home = () => {
 
         <div className="hm__singleitem__member">
           {members.map((member) => {
-            // Conditional Rendering
+            // Conditional Rendering =================================
             const MemberConditional = () => {
               switch (member.name) {
                 case "Hans":

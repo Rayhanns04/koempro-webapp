@@ -20,6 +20,9 @@ import Person from "@material-ui/icons/Person";
 // core components
 import componentStyles from "assets/theme/components/navbar-dropdown.js";
 
+// Addons components
+import IntekLogo from "../../assets/images/logo-intek.png";
+
 const useStyles = makeStyles(componentStyles);
 
 export default function NavbarDropdown() {
@@ -114,12 +117,12 @@ export default function NavbarDropdown() {
       >
         <Avatar
           alt="..."
-          src={require("assets/img/theme/team-4-800x800.jpg").default}
+          src={IntekLogo}
           classes={{
             root: classes.avatarRoot,
           }}
         />
-        <Hidden smDown>Jessica Jones</Hidden>
+        <Hidden smDown>Admin Koempro</Hidden>
       </Button>
       {renderMenu}
     </>

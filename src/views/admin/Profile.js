@@ -477,7 +477,7 @@ function Profile() {
                 </Grid>
                 <Box textAlign="center">
                   <Typography variant="h3">
-                    Jessica Jones
+                    Admin Koempro
                     <Box component="span" fontWeight="300">
                       , 27
                     </Box>

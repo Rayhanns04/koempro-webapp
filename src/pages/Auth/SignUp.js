@@ -78,7 +78,7 @@ const SignUp = () => {
   // Rest API end point
   const handleSubmitForm = () => {
     if (passwordAuth === password) {
-      Axios.post("https://koempro-server-side.herokuapp.com/auth", {
+      Axios.post("https://koempro-server-side.herokuapp.com/auth/regist", {
         username: username,
         password: password,
       })

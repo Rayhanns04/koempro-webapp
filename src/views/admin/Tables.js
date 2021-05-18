@@ -106,6 +106,15 @@ const Tables = () => {
   const [imageReceive, setImageReceive] = React.useState("");
   const [avatarReceive, setAvatarReceive] = React.useState("");
 
+  const handleGetPostData = () => {
+    Axios.get("https://server9999.herokuapp.com/posts").then((res) => {
+      setPosts(res.data);
+    });
+    Axios.get("https://server9999.herokuapp.com/members").then((res) => {
+      setMembers(res.data);
+    });
+  };
+
   const handleUdateProject = (id) => {
     console.log(id);
     Axios.put(
@@ -130,6 +139,7 @@ const Tables = () => {
           alert("Don't Have Access Token, Please Sign in Again");
         } else {
           setOpen(false);
+          setInterval(handleGetPostData, 2000);
           return swal("Good job!", "Success Update Post!", "success");
         }
       })
@@ -149,6 +159,7 @@ const Tables = () => {
         if (result.data.error) {
           alert("Don't Have Access Token, Please Sign in Again");
         } else {
+          setInterval(handleGetPostData, 2000);
           return swal("Good job!", "Success Delete Post!", "success");
         }
       })
@@ -181,6 +192,8 @@ const Tables = () => {
           alert("Don't Have Access Token, Please Sign in Again");
         } else {
           setOpenFromCreate(false);
+          // For Refresh API when true
+          setInterval(handleGetPostData, 1000);
           return swal("Good job!", "Success Full Add New Post!", "success");
         }
       })
@@ -189,7 +202,7 @@ const Tables = () => {
       });
   };
 
-  // Rest API ========================================================================
+  // Call Rest API ========================================================================
   useEffect(() => {
     Axios.get("https://server9999.herokuapp.com/posts").then((res) => {
       setPosts(res.data);
